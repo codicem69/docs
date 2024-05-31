@@ -78,7 +78,7 @@ class Form(BaseComponent):
 
     def th_form(self, form):
         bc = form.center.borderContainer()
-        self.Documenti(bc.borderContainer(region='top',datapath='.record',height='120px', splitter=True))
+        self.Documenti(bc.borderContainer(region='top',datapath='.record',height='125px', splitter=True))
         tc = bc.tabContainer(region='center',margin='2px')
         self.allegatiDoc(tc.contentPane(title='Allegati'))
     
@@ -91,7 +91,7 @@ class Form(BaseComponent):
         
         fb.field('data' )
         fb.field('prot' )
-        fb.field('descrizione', colspan=2 )
+        fb.field('descrizione', colspan=2 , height='30px', tag='textArea')
         fb.br()
         fb.field('ente_id',hasDownArrow=True )
         fb.field('tipo_doc_id',hasDownArrow=True )
