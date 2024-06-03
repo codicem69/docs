@@ -64,7 +64,8 @@ class ViewFromDocumenti(BaseComponent):
                             cols=5, isDefault=True) 
 
 class Form(BaseComponent):
-    py_requires="""gnrcomponents/attachmanager/attachmanager:AttachManager"""
+    py_requires="""gnrcomponents/dynamicform/dynamicform:DynamicForm,
+                   gnrcomponents/attachmanager/attachmanager:AttachManager"""
 
     #def th_form(self, form):
     #    
@@ -81,20 +82,25 @@ class Form(BaseComponent):
         self.Documenti(bc.borderContainer(region='top',datapath='.record',height='125px', splitter=True))
         tc = bc.tabContainer(region='center',margin='2px')
         self.allegatiDoc(tc.contentPane(title='Allegati'))
+       # self.extra(tc.contentPane(title='Extra', datapath='.record'))
     
     def allegatiDoc(self,pane):
         pane.attachmentMultiButtonFrame()
 
     def Documenti(self,bc):
         left = bc.roundedGroup(region='center',title='!![it]Documenti').div(margin='10px',margin_right='20px')
-        fb = left.formbuilder(cols=2, border_spacing='4px',colswidth='auto',fld_width='100%',width='100%')
-        
+        fb = left.formbuilder(cols=4, border_spacing='4px',colswidth='auto',fld_width='100%',width='100%')
         fb.field('data' )
         fb.field('prot' )
-        fb.field('descrizione', colspan=2 , height='30px', tag='textArea')
-        fb.br()
         fb.field('ente_id',hasDownArrow=True )
         fb.field('tipo_doc_id',hasDownArrow=True )
+        fb.field('descrizione', colspan=4 , height='30px', tag='textArea')
+        fb.appendDynamicFields('extra')
+
+    #def extra(self,pane):
+    #    pane.dynamicFieldsPane('extra')
 
     def th_options(self):
         return dict(dialog_height='400px', dialog_width='600px' )
+
+    

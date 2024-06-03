@@ -11,4 +11,4 @@ class Table(object):
         tbl.column('descrizione', name_short='!![it]Descrizione')
         tbl.column('tipo_doc_id',size='22', group='_', name_long='!![it]Tipologia documento'
                     ).relation('tip_doc.id', relation_name='tipodoc', mode='foreignkey', onDelete='raise')
-        
+        tbl.column('extra', dtype='X', name_long='Extra', subfields='tipo_doc_id')

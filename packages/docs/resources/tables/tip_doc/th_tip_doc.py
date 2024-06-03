@@ -23,7 +23,7 @@ class View(BaseComponent):
 
 class Form(BaseComponent):
   
-    #py_requires = 'gnrcomponents/dynamicform/dynamicform:DynamicForm'
+    py_requires = 'gnrcomponents/dynamicform/dynamicform:DynamicForm'
     def th_form(self, form):
         bc = form.center.borderContainer()
         fb = bc.contentPane(region='top',datapath='.record').formbuilder(cols=2, border_spacing='4px')
@@ -33,7 +33,8 @@ class Form(BaseComponent):
                                                                 margin='2px', formResource='Form')
        
         form.htree.relatedTableHandler(th, dropOnRoot=False, inherited=True)
+        tc.contentPane(title='Campi').fieldsGrid(margin='2px', rounded=6)
+        #tc.contentPane(title='prova')
 
-      
     def th_options(self):
         return dict(dialog_height='400px', dialog_width='600px', hierarchical=True)
